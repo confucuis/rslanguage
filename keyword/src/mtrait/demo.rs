@@ -22,6 +22,6 @@ impl<'a> Behavior for Dog<'a> {
     }
 
     fn swim(&self) {
-        println!("{} swimming ...", self.name); // 注意这里加了分号
+        println!("{} swimming ...", self.name);
     }
 }
