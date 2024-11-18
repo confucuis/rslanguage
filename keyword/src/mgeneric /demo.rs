@@ -1,7 +1,7 @@
 
 //- 泛型函数
-pub fn print_t<T>(arg: T) {
-    println!(T)
+pub fn print_t<T: std::fmt::Display>(arg: T) {
+    println!("{}", arg)
 }
 
 //- 泛型结构体: 默认T类型为i32
@@ -20,13 +20,24 @@ impl<T> Point<T> {
 //- 内置泛型枚举: Option<T>, Result<T, E>
 
 //- trait泛型约束
-use std::cmp::Ord;
-
-// 参数a, b必须实现Ord trait
-pub fn max<'a, T: Ord>(a: &'a T, b: &'a T) {
+// 参数a, b必须实现PartialOrd trait
+pub fn max<'a, T: std::cmp::PartialOrd>(a: &'a T, b: &'a T) -> &'a T {
     if a>b {
         a
     } else {
         b
+    }
+}
+
+// where关键字进行多个trait约束
+pub fn add<T>(a: T, b: T) -> T
+where
+    T: std::ops::Add<Output = T> +
+       std::ops::Sub<Output = T>
+{
+    if a > b {
+        a - b
+    } else {
+        a + b
     }
 }
