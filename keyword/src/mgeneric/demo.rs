@@ -30,7 +30,7 @@ pub fn max<'a, T: std::cmp::PartialOrd>(a: &'a T, b: &'a T) -> &'a T {
 }
 
 // where关键字进行多个trait约束
-pub fn add<T>(a: T, b: T) -> T
+pub fn add_or_sub<T>(a: T, b: T) -> T
 where
     T: std::ops::Add<Output = T> +
        std::ops::Sub<Output = T>
