@@ -25,3 +25,13 @@ pub mod m_module {
     }
 }
 
+pub mod outer {
+    // 外部都可以访问
+    pub fn example() { println!("hello world"); inner::example() }
+    // crate内部可以访问
+    pub(crate) fn example_x() { println!("hello world");  }
+    pub mod inner {
+        // 当前模块的父模块可以访问
+        pub(super) fn example() { println!("hello world"); }
+    }
+}
