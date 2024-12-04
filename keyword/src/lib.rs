@@ -15,12 +15,12 @@ pub mod m_module {
     }
 
     // crate之内可见,crate之外不可见
-    pub(crate) fn example_c() {
+    pub(crate) fn _example_c() {
         println!("c: hello world");
     }
 
     // 只能在当前模块的父模块可见
-    pub(super) fn example_d() {
+    pub(super) fn _example_d() {
         println!("d: hello world");
     }
 }
@@ -29,7 +29,7 @@ pub mod outer {
     // 外部都可以访问
     pub fn example() { println!("hello world"); inner::example() }
     // crate内部可以访问
-    pub(crate) fn example_x() { println!("hello world");  }
+    pub(crate) fn _example_x() { println!("hello world");  }
     pub mod inner {
         // 当前模块的父模块可以访问
         pub(super) fn example() { println!("hello world"); }

@@ -11,7 +11,7 @@ pub struct Dog<'a> {
 
 impl<'a> Dog<'a> {
     // 创建一个新的 Dog 实例
-    fn new(name: &'a str) -> Self {
+    pub fn new(name: &'a str) -> Self {
         Dog { name }
     }
 }
